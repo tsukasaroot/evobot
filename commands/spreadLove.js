@@ -12,6 +12,6 @@ module.exports = {
       return message
         .reply(i18n.__mf("spreadlove.usageReply", { prefix: message.client.prefix }))
         .catch(console.error);
-       return message.reply("sends lot of ❤️❤️❤️❤️❤️ to " + args);
+      return message.reply("sends lot of ❤️❤️❤️❤️❤️ to " + args);
   }
 };
