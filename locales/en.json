@@ -1,7 +1,7 @@
 {
   "spreadlove": {
-    "description": "Send love to someone."
-    "usageReply": "Usage: {prefix}spreadlove <username>";
+    "description": "Send love to someone.",
+    "usageReply": "Usage: {prefix}spreadlove <username>"
   },
   "clip": {
     "description": "Plays a clip sound",
