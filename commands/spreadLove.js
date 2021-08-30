@@ -10,8 +10,8 @@ module.exports = {
   execute(message, args) {
     if (!args.length)
       return message
-        .reply(i18n.__mf("play.usageReply", { prefix: message.client.prefix }))
+        .reply(i18n.__mf("spreadlove.usageReply", { prefix: message.client.prefix }))
         .catch(console.error);
-       return message.reply("@" + args + " sends you lot of ❤️❤️❤️❤️❤️");
+       return message.reply(args + " sends you lot of ❤️❤️❤️❤️❤️");
   }
 };
