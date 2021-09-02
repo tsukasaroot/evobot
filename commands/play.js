@@ -87,9 +87,6 @@ module.exports = {
         };
       } catch (error) {
         console.error(error);
-        if (error.message === 'Status code: 410') {
-          return message.reply("This playlist's song has been deleted");
-        }
         return message.reply(error.message).catch(console.error);
       }
     } else if (scRegex.test(url)) {
