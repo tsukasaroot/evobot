@@ -1,19 +1,10 @@
+const i18n = require("../util/i18n");
 const { MessageEmbed } = require("discord.js");
 const { play } = require("../include/play");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader").default;
-
-const {
-  YOUTUBE_API_KEY,
-  SOUNDCLOUD_CLIENT_ID,
-  MAX_PLAYLIST_SIZE,
-  DEFAULT_VOLUME,
-  LOCALE
-} = require("../util/EvobotUtil");
+const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME } = require("../util/Util");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
-const i18n = require("i18n");
-
-i18n.setLocale(LOCALE);
 
 module.exports = {
   name: "playlist",
@@ -50,7 +41,7 @@ module.exports = {
       connection: null,
       songs: [],
       loop: false,
-      volume: DEFAULT_VOLUME || 100,
+      volume: DEFAULT_VOLUME,
       playing: true
     };
 
@@ -79,7 +70,7 @@ module.exports = {
       try {
         const results = await youtube.searchPlaylists(search, 1, { part: "snippet" });
         playlist = results[0];
-        videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 10, { part: "snippet" });
+        videos = await playlist.getVideos(MAX_PLAYLIST_SIZE, { part: "snippet" });
       } catch (error) {
         console.error(error);
         return message.reply(error.message).catch(console.error);
