@@ -42,6 +42,7 @@ module.exports = {
       songs: [],
       loop: false,
       volume: DEFAULT_VOLUME,
+      muted: false,
       playing: true
     };
 
@@ -68,7 +69,7 @@ module.exports = {
       }
     } else {
       try {
-        const results = await youtube.searchPlaylists(search, 1, { part: "snippet" });
+        const results = await youtube.searchPlaylists(search, 1, { part: "id" });
         playlist = results[0];
         videos = await playlist.getVideos(MAX_PLAYLIST_SIZE, { part: "snippet" });
       } catch (error) {
@@ -113,7 +114,7 @@ module.exports = {
         console.error(error);
         message.client.queue.delete(message.guild.id);
         await channel.leave();
-        return message.channel.send(i18n.__("play.cantJoinChannel", { error: error })).catch(console.error);
+        return message.channel.send(i18n.__mf("play.cantJoinChannel", { error: error })).catch(console.error);
       }
     }
   }
